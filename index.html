@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOLARIS · SEU CXXY RoboMaster</title>
+<style>
+:root{
+  --bg:#0a0a0c;
+  --bg2:#111114;
+  --line:#2a2a30;
+  --gold:#f0a830;
+  --gold2:#ffc857;
+  --red:#d43a2f;
+  --text:#e8e6e1;
+  --muted:#8a877f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+a{color:var(--gold2);text-decoration:none}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 40px;
+  background:rgba(10,10,12,.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+nav .logo{font-weight:900;font-size:20px;letter-spacing:3px;color:#fff}
+nav .logo span{color:var(--gold)}
+nav ul{display:flex;gap:28px;list-style:none}
+nav ul a{color:var(--muted);font-size:13px;letter-spacing:1px;transition:.2s}
+nav ul a:hover{color:var(--gold2)}
+
+/* HERO */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('images/poster.jpg') center/cover no-repeat;
+  opacity:.55;
+  filter:saturate(1.1);
+}
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(10,10,12,.6) 0%,rgba(10,10,12,.3) 50%,var(--bg) 100%);
+}
+.hero-inner{position:relative;z-index:2;padding:0 20px}
+.hero .kicker{
+  display:inline-block;padding:6px 16px;
+  border:1px solid var(--gold);color:var(--gold);
+  font-size:12px;letter-spacing:4px;margin-bottom:24px;
+}
+.hero h1{
+  font-size:clamp(60px,12vw,160px);
+  font-weight:900;letter-spacing:8px;
+  color:#fff;line-height:1;
+  text-shadow:0 0 40px rgba(240,168,48,.4);
+}
+.hero .slogan{
+  margin-top:20px;font-size:clamp(18px,2.5vw,28px);
+  letter-spacing:8px;color:var(--gold2);font-weight:300;
+}
+.hero .sub{margin-top:14px;color:var(--muted);font-size:14px;letter-spacing:2px}
+
+/* SECTIONS */
+section{padding:100px 40px;max-width:1200px;margin:0 auto}
+.section-tag{
+  display:inline-block;font-size:12px;letter-spacing:4px;
+  color:var(--gold);margin-bottom:12px;
+  border-left:3px solid var(--gold);padding-left:12px;
+}
+h2{
+  font-size:clamp(32px,4vw,48px);font-weight:900;
+  color:#fff;margin-bottom:32px;letter-spacing:2px;
+}
+.lead{font-size:17px;color:var(--muted);max-width:800px}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;margin-top:40px;align-items:center}
+.about-grid img{width:100%;border-radius:4px;border:1px solid var(--line);filter:contrast(1.05)}
+.stat-row{display:flex;gap:32px;margin-top:32px;flex-wrap:wrap}
+.stat{border-left:2px solid var(--gold);padding-left:16px}
+.stat b{display:block;font-size:32px;color:var(--gold2);font-weight:900}
+.stat span{font-size:12px;color:var(--muted);letter-spacing:1px}
+
+/* ROBOT TYPES */
+.robots{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:40px}
+.robot-card{
+  background:var(--bg2);border:1px solid var(--line);
+  padding:28px;transition:.25s;position:relative;overflow:hidden;
+}
+.robot-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  transform:scaleX(0);transition:.3s;
+}
+.robot-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.robot-card:hover::before{transform:scaleX(1)}
+.robot-card .num{font-size:12px;color:var(--gold);letter-spacing:2px}
+.robot-card h3{font-size:22px;color:#fff;margin:8px 0 12px;letter-spacing:1px}
+.robot-card p{font-size:14px;color:var(--muted)}
+.robot-card .role{display:inline-block;margin-top:14px;font-size:12px;color:var(--gold2);padding:3px 10px;border:1px solid var(--gold)}
+
+/* COMPETITIONS */
+.comp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:40px}
+.comp{background:var(--bg2);padding:32px;border-top:3px solid var(--red)}
+.comp h3{color:#fff;font-size:20px;margin-bottom:8px}
+.comp .code{color:var(--gold);font-size:12px;letter-spacing:2px}
+.comp p{color:var(--muted);font-size:14px;margin-top:12px}
+
+/* GALLERY */
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:40px}
+.gallery img{width:100%;height:280px;object-fit:cover;border:1px solid var(--line);transition:.3s;filter:grayscale(.2) contrast(1.05)}
+.gallery img:hover{filter:none;transform:scale(1.01)}
+@media(max-width:700px){.gallery{grid-template-columns:1fr}}
+
+/* JOIN */
+.join{
+  background:linear-gradient(135deg,#1a1408,#0a0a0c);
+  border:1px solid var(--gold);
+  padding:60px;text-align:center;margin-top:40px;
+}
+.join h2{margin-bottom:16px}
+.join p{color:var(--muted);max-width:600px;margin:0 auto 28px}
+.join .cta{
+  display:inline-block;padding:14px 40px;
+  background:var(--gold);color:#000;font-weight:900;
+  letter-spacing:2px;transition:.2s;
+}
+.join .cta:hover{background:var(--gold2);box-shadow:0 0 30px rgba(240,168,48,.4)}
+
+/* FOOTER */
+footer{
+  padding:40px;text-align:center;color:var(--muted);
+  font-size:12px;letter-spacing:1px;
+  border-top:1px solid var(--line);margin-top:60px;
+}
+footer span{color:var(--gold)}
+
+@media(max-width:768px){
+  nav{padding:14px 20px}
+  nav ul{display:none}
+  section{padding:70px 20px}
+  .about-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">SOLARIS<span>_RM</span></div>
+  <ul>
+    <li><a href="#about">战队</a></li>
+    <li><a href="#what">什么是RM</a></li>
+    <li><a href="#robots">兵种</a></li>
+    <li><a href="#comp">赛制</a></li>
+    <li><a href="#join">加入我们</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="kicker">SEU CXXY · ROBOMASTER</div>
+    <h1>SOLARIS</h1>
+    <div class="slogan">秣陵形胜，共赴千山</div>
+    <div class="sub">东南大学成贤学院 · 机甲大师战队</div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="section-tag">ABOUT US</div>
+  <h2>关于 Solaris</h2>
+  <p class="lead">
+    Solaris 是东南大学成贤学院的 RoboMaster 机甲大师战队。我们从南京出发，
+    以"太阳"为名，把机械、嵌入式、视觉、算法和运营拧成一股绳——
+    在赛场上自研机器人，在弹丸与装甲之间找工程的答案。
+  </p>
+  <div class="about-grid">
+    <div>
+      <div class="stat-row">
+        <div class="stat"><b>RM</b><span>RoboMaster 赛事体系</span></div>
+        <div class="stat"><b>7+</b><span>机器人兵种协同</span></div>
+        <div class="stat"><b>7 min</b><span>每局对抗时长</span></div>
+      </div>
+      <p class="lead" style="margin-top:32px">
+        战队面向全校招募机械、电控、嵌入式、机器视觉、算法、运营、宣发方向的队友。
+        没有经验不要紧——RM 本身就是一台最大的学习机器。
+      </p>
+    </div>
+    <img src="images/hero.jpg" alt="RM 英雄机器人">
+  </div>
+</section>
+
+<section id="what">
+  <div class="section-tag">WHAT IS ROBOMASTER</div>
+  <h2>什么是 RoboMaster</h2>
+  <p class="lead">
+    RoboMaster 机甲大师赛是由大疆创新发起、面向全球高校的机器人竞技赛事。
+    对战双方在篮球场大小的封闭场地内，自主研发不同兵种的机器人，
+    在 7 分钟内发射弹丸攻击对方机器人与基地——比赛结束时基地剩余血量高的一方获胜。
+    它融合了机械设计、嵌入式系统、机器视觉、人机交互、人工智能与团队协作，
+    被称为"机器人版的电竞"。
+  </p>
+  <div class="comp-grid" style="margin-top:40px">
+    <div class="comp">
+      <div class="code">SINCE 2013</div>
+      <h3>赛事起源</h3>
+      <p>由大疆创新 DJI 发起，每年吸引全球 400+ 高校参赛，累计输送数万名青年工程师。</p>
+    </div>
+    <div class="comp">
+      <div class="code">7 MIN</div>
+      <h3>比赛节奏</h3>
+      <p>红蓝双方在复杂地形中协同作战，激活能量机关、夺占资源区、打击对方基地。</p>
+    </div>
+    <div class="comp">
+      <div class="code">FULL STACK</div>
+      <h3>技术栈</h3>
+      <p>机械结构、嵌入式控制、机器视觉、自瞄、决策算法、通信、运营与项目管理全链路。</p>
+    </div>
+  </div>
+</section>
+
+<section id="robots">
+  <div class="section-tag">ROBOT CLASSES</div>
+  <h2>战场兵种</h2>
+  <p class="lead">一支完整的 RM 战队需要在场上协同多种机器人，每种都有独立的设计与战术定位。</p>
+  <div class="robots">
+    <div class="robot-card">
+      <div class="num">01</div>
+      <h3>英雄机器人 Hero</h3>
+      <p>战场上唯一可以发射 42mm 大弹丸的单位，单发伤害高，是团队的火力核心与输出担当。</p>
+      <span class="role">火力核心</span>
+    </div>
+    <div class="robot-card">
+      <div class="num">02</div>
+      <h3>步兵机器人 Infantry</h3>
+      <p>发射 17mm 小弹丸，机动性强，负责激活能量机关、前压拉扯与持续输出。</p>
+      <span class="role">机动输出</span>
+    </div>
+    <div class="robot-card">
+      <div class="num">03</div>
+      <h3>工程机器人 Engineer</h3>
+      <p>负责取弹、补给、扶升与拖拽阵亡步兵到复活区，是团队的后勤与工程担当。</p>
+      <span class="role">后勤补给</span>
+    </div>
+    <div class="robot-card">
+      <div class="num">04</div>
+      <h3>空中机器人 Aerial</h3>
+      <p>无人机在空中侦查、补给与攻击地面目标，掌握制空权就能左右战局。</p>
+      <span class="role">制空侦查</span>
+    </div>
+    <div class="robot-card">
+      <div class="num">05</div>
+      <h3>哨兵机器人 Sentry</h3>
+      <p>沿己方轨道全自动运行，无需人工操控，负责基地周边警戒与自动防御。</p>
+      <span class="role">自动防御</span>
+    </div>
+    <div class="robot-card">
+      <div class="num">06</div>
+      <h3>飞镖 / 雷达</h3>
+      <p>飞镖机器人可远程打击对方基地；雷达机器人全局感知敌方位置，给全队提供决策信息。</p>
+      <span class="role">战略侦察</span>
+    </div>
+  </div>
+</section>
+
+<section id="comp">
+  <div class="section-tag">COMPETITIONS</div>
+  <h2>赛事体系</h2>
+  <div class="comp-grid">
+    <div class="comp">
+      <div class="code">RMUC</div>
+      <h3>机甲大师超级对抗赛</h3>
+      <p>RoboMaster University Championship，主赛事。全阵容 7 分钟步兵/英雄/工程/空中/哨兵协同对抗，分区域赛、国际预选赛、复活赛与总决赛。</p>
+    </div>
+    <div class="comp">
+      <div class="code">RMUL</div>
+      <h3>高校联盟赛</h3>
+      <p>RoboMaster University League，区域性 1v1 步兵对抗与 3v3 对抗，是新队伍练兵、积累实战经验的入门赛事。</p>
+    </div>
+    <div class="comp">
+      <div class="code">RMUT</div>
+      <h3>技术挑战赛</h3>
+      <p>偏向单机技术指标——自瞄精度、爬坡、能量机关识别等，是检验机械、电控与视觉硬实力的舞台。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">GALLERY</div>
+  <h2>赛场掠影</h2>
+  <div class="gallery">
+    <img src="images/arena.jpg" alt="RM 赛场">
+    <img src="images/battle.jpg" alt="机器人对战">
+    <img src="images/robots.jpg" alt="多兵种集结">
+    <img src="images/hero.jpg" alt="英雄机器人">
+  </div>
+</section>
+
+<section id="join" class="join">
+  <div class="section-tag">JOIN US</div>
+  <h2>加入 Solaris</h2>
+  <p>
+    无论你是想拧螺丝、写固件、调自瞄、画装甲还是剪视频——
+    只要愿意在深夜的实验室里和一台机器人死磕到底，这里就有你的位置。
+  </p>
+  <a class="cta" href="https://www.robomaster.com/zh-CN" target="_blank">了解 RoboMaster 官方</a>
+</section>
+
+<footer>
+  <span>SOLARIS</span> · 东南大学成贤学院 RoboMaster 战队 · SEU CXXY<br>
+  秣陵形胜，共赴千山 · Built with passion in Nanjing
+</footer>
+
+</body>
+</html>
