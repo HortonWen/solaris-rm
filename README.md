@@ -18,6 +18,14 @@ Solaris 是东南大学成贤学院的 RoboMaster 机甲大师战队。我们从
 - **技术栈**：机械结构、嵌入式控制、机器视觉、自瞄、决策算法、通信、运营宣发
 - **招新方向**：机械 / 电控 / 嵌入式 / 视觉算法 / 运营宣发
 
+## 27 赛季目标
+
+- **首站赛事**：[RMUL 高校联盟赛 · 步兵 1v1](https://www.robomaster.com/zh-CN/robo/college-league)
+- **机械基线**：采用 [沈阳理工大学 Ambition 战队](https://www.sylu.edu.cn/info/1004/25520.htm) 开源的
+  [全向轮中供步兵机械方案](https://bbs-web-static.robomaster.com/c100d9800422437a983d742915cf9ece1749118466361/RM2025-%E5%85%A8%E5%90%91%E4%B8%AD%E4%BE%9B%E6%AD%A5%E5%85%B5%E6%9C%BA%E6%A2%B0%E6%96%B9%E6%A1%88%20%E6%B2%88%E9%98%B3%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6%20Ambition.pdf)，
+  在此基础上做适配与二次开发
+- **参考**：[RoboMaster 规则/资料中心](https://bbs.robomaster.com/wiki/20204847) · [赛事公告](https://www.robomaster.com/zh-CN/resource/announcement/competition)
+
 ---
 
 ## 关联项目
