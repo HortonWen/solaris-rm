@@ -32,7 +32,7 @@ Solaris 是东南大学成贤学院的 RoboMaster 机甲大师战队。我们从
 
 ### [rm-open-source-leaderboard](https://github.com/HortonWen/rm-open-source-leaderboard)
 
-机甲大师（RoboMaster）开源资源目录，由东南大学成贤学院计算机协会整理。汇总各战队、个人开发者在 GitHub、Gitee 与 RoboMaster 论坛开源专栏的代码、图纸与项目，并收录 DJI 官方及第三方公司的文档与 SDK。
+机甲大师（RoboMaster）开源资源目录，由东南大学成贤学院机甲大师战队整理。汇总各战队、个人开发者在 GitHub、Gitee 与 RoboMaster 论坛开源专栏的代码、图纸与项目，并收录 DJI 官方及第三方公司的文档与 SDK。
 
 - **在线目录**：<https://hortonwen.github.io/rm-open-source-leaderboard/>
 - **分类**：官方资源 / 第三方公司 / 社区框架与工具 / 机械图纸 / 战队开源 / 个人开源 / 论坛开源帖
